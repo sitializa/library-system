@@ -1,2 +1,38 @@
-<h1>Daftar Buku</h1>
-<p>Sistem Informasi Perpustakaan</p>
+@extends('layouts.app')
+
+@section('title', 'Daftar Buku')
+
+@section('content')
+    <h2>Daftar Buku</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Judul</th>
+                <th>Penulis</th>
+                <th>Tahun Terbit</th>
+                <th>Stok</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($books as $book)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $book['title'] }}</td>
+                    <td>{{ $book['author'] }}</td>
+                    <td>{{ $book['year'] }}</td>
+                    <td>
+                        @if($book['stock'] > 0)
+                            Tersedia ({{ $book['stock'] }})
+                        @else
+                            Habis
+                        @endif
+                    </td>
+                    <td><a href="/books/{{ $book['id'] }}">Detail</a></td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+@endsection
