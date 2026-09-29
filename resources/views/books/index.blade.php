@@ -20,17 +20,17 @@
             @foreach($books as $book)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $book['title'] }}</td>
-                    <td>{{ $book['author'] }}</td>
-                    <td>{{ $book['year'] }}</td>
+                    <td>{{ $book->title }}</td>
+                    <td>{{ $book->author }}</td>
+                    <td>{{ $book->year }}</td>
                     <td>
-                        @if($book['stock'] > 0)
-                            Tersedia ({{ $book['stock'] }})
+                        @if($book->stock > 0)
+                            Tersedia ({{ $book->stock }})
                         @else
                             Habis
                         @endif
                     </td>
-                    <td><a href="/books/{{ $book['id'] }}">Detail</a></td>
+                    <td><a href="/books/{{ $book->id }}">Detail</a></td>
                 </tr>
             @endforeach
         </tbody>
