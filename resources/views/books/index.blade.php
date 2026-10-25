@@ -13,6 +13,7 @@
                 <th>No</th>
                 <th>Judul</th>
                 <th>Penulis</th>
+                <th>Kategori</th>
                 <th>Tahun Terbit</th>
                 <th>Stok</th>
                 <th>Aksi</th>
@@ -24,6 +25,7 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $book->title }}</td>
                     <td>{{ $book->author }}</td>
+                    <td>{{ $book->category?->name ?? 'Belum ada kategori' }}</td>
                     <td>{{ $book->year }}</td>
                     <td>
                         @if($book->stock > 0)
