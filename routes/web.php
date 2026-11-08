@@ -29,4 +29,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/categories', [CategoryController::class, 'index']);
     Route::get('/members', [MemberController::class, 'index']);
+ });
+
+ Route::middleware(['auth', 'can:manage-users'])->group(function() {
+    Route::get('/users', function(){
+        return "halo";
+    });
 });

@@ -20,6 +20,9 @@
         <a href="/books">Books</a> |
         <a href="/categories">Categories</a> |
         <a href="/members">Members</a> |
+        @can('manage-users')
+        <a href = "/users" > User </a>
+        @endcan
         <form action="{{ route('logout') }}" method="POST" style="display:inline">
             @csrf
             <button type="submit">Logout</button>
