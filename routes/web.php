@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\UserController;
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLogin'])
@@ -31,8 +32,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/members', [MemberController::class, 'index']);
  });
 
- Route::middleware(['auth', 'can:manage-users'])->group(function() {
-    Route::get('/users', function(){
-        return "halo";
-    });
+ Route::middleware(['auth', 'can:manage-users'])->group(function () {
+    Route::resource('users', UserController::class)->only(['index']);
 });
