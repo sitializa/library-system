@@ -14,17 +14,19 @@
                 <th>Judul</th>
                 <th>Penulis</th>
                 <th>Tahun Terbit</th>
+                <th>Kategori</th>
                 <th>Stok</th>
                 <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($books as $book)
+            @forelse($books as $book)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $book->title }}</td>
                     <td>{{ $book->author }}</td>
                     <td>{{ $book->year }}</td>
+                    <td>{{ $book->category?->name ?? '-' }}</td>
                     <td>
                         @if($book->stock > 0)
                             Tersedia ({{ $book->stock }})
@@ -43,7 +45,11 @@
                         </form>
                     </td>
                 </tr>
-            @endforeach
+            @empty
+                <tr>
+                    <td colspan="7">Belum ada data buku.</td>
+                </tr>
+            @endforelse
         </tbody>
     </table>
 @endsection

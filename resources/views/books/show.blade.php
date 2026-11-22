@@ -7,6 +7,7 @@
     <p><strong>Judul:</strong> {{ $book->title }}</p>
     <p><strong>Penulis:</strong> {{ $book->author }}</p>
     <p><strong>Tahun Terbit:</strong> {{ $book->year }}</p>
+    <p><strong>Kategori:</strong> {{ $book->category?->name ?? '-' }}</p>
     <p>
         <strong>Stok:</strong>
         @if($book->stock > 0)
